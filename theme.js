@@ -1,0 +1,1 @@
+const THEME_KEY='isa-os-theme';function applyTheme(theme){document.documentElement.dataset.theme=theme;}applyTheme(localStorage.getItem(THEME_KEY)||'light');window.IsaTheme={toggle(){const next=document.documentElement.dataset.theme==='dark'?'light':'dark';localStorage.setItem(THEME_KEY,next);applyTheme(next);}};
