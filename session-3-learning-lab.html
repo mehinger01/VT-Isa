@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Isa's Rapid Learning Performance Lab: prime, process, retrieve, and repair.">
+  <title>Session 3 | Rapid Learning Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cards.css">
+  <script src="theme.js"></script>
+  <style>
+    :root{--green:#237a57;--green-soft:#e8f6ef;--amber:#a86808;--amber-soft:#fff5dc;--red:#a33b3b;--red-soft:#fff0f0;--purple:#6d54a3;--purple-soft:#f1edfb}
+    .lab-hero{padding:64px 0 42px;background:radial-gradient(circle at 85% 20%,rgba(82,113,184,.18),transparent 32%),linear-gradient(180deg,#fbfcff,var(--paper))}
+    .lab-hero h1{font-size:clamp(2.5rem,5vw,4.6rem)}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.chip{display:inline-flex;align-items:center;min-height:34px;padding:0 12px;border-radius:999px;background:var(--white);border:1px solid var(--line);font-size:.88rem;font-weight:700;color:var(--navy)}
+    .control-bar{position:sticky;top:72px;z-index:8;background:rgba(247,249,252,.95);backdrop-filter:blur(12px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .controls{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.progress-wrap{flex:1;min-width:220px}.progress-track{height:8px;border-radius:999px;background:#dfe7f3;overflow:hidden}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--purple));transition:width .25s}.progress-label{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-bottom:6px}
+    .timer{display:flex;align-items:center;gap:9px;font-weight:800;color:var(--navy)}.timer-display{font-variant-numeric:tabular-nums;min-width:58px}.mini-btn,.action-btn{border:0;border-radius:12px;font:inherit;font-weight:700;cursor:pointer}.mini-btn{padding:8px 11px;background:var(--white);border:1px solid var(--line);color:var(--navy)}.action-btn{padding:12px 17px;background:var(--navy);color:#fff}.action-btn.secondary{background:var(--white);color:var(--navy);border:1px solid var(--line)}.action-btn.green{background:var(--green)}
+    .lab-shell{display:grid;grid-template-columns:250px minmax(0,1fr);gap:30px;padding:38px 0 88px}.lab-nav{position:sticky;top:158px;align-self:start}.lab-nav button{width:100%;text-align:left;padding:12px 14px;border:0;border-left:3px solid transparent;background:transparent;color:var(--muted);font:inherit;font-weight:700;cursor:pointer}.lab-nav button.active{color:var(--navy);border-left-color:var(--blue);background:var(--blue-soft);border-radius:0 12px 12px 0}.lab-nav small{display:block;margin:18px 14px 6px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.1em}
+    .stage{display:none}.stage.active{display:block}.stage-head{margin-bottom:24px}.stage-head h2{font-size:clamp(2rem,4vw,3.1rem)}.stage-kicker{color:var(--blue);font-weight:800;text-transform:uppercase;letter-spacing:.11em;font-size:.78rem}.stage-intro{font-size:1.08rem;color:var(--muted);max-width:780px;margin-top:14px}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;margin:20px 0;box-shadow:0 9px 24px rgba(32,54,95,.06)}.panel h3{font-size:1.2rem}.panel.accent{border-left:5px solid var(--blue)}.panel.green{border-left:5px solid var(--green)}.panel.amber{border-left:5px solid var(--amber)}.panel.purple{border-left:5px solid var(--purple)}
+    .instruction{padding:15px 17px;border-radius:14px;background:var(--blue-soft);color:var(--navy);font-weight:600}.warning{background:var(--amber-soft);color:#704500}.success{background:var(--green-soft);color:#15583e}.lock-note{background:var(--purple-soft);color:#4d387d}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.field{margin:16px 0}.field label,.field-label{display:block;margin-bottom:7px;font-weight:800;color:var(--navy)}textarea,input[type=text],input[type=number],select{width:100%;border:1px solid #cfd9e8;border-radius:12px;padding:12px 13px;font:inherit;color:var(--ink);background:#fff}textarea{min-height:94px;resize:vertical}textarea:focus,input:focus,select:focus{outline:3px solid rgba(82,113,184,.18);border-color:var(--blue)}
+    .sequence{font-size:1.15rem;font-weight:800;letter-spacing:.03em;color:var(--navy);padding:13px 15px;border-radius:12px;background:var(--paper);margin:10px 0}.formula{font-family:Georgia,serif;font-size:1.15rem;padding:15px;border-radius:12px;background:var(--paper);text-align:center;color:var(--navy)}
+    .question{padding:17px 0;border-bottom:1px solid var(--line)}.question:last-child{border-bottom:0}.question p{font-weight:700;margin-bottom:10px}.choice{display:block;margin:8px 0}.choice input{margin-right:8px}
+    details{border:1px solid var(--line);border-radius:14px;background:#fff;margin:13px 0}summary{cursor:pointer;padding:14px 16px;font-weight:800;color:var(--navy)}details>div{padding:0 16px 16px}.tutor-only{display:none}.facilitator-on .tutor-only{display:block}.answer-key{background:#17233b;color:#eef3ff;border-radius:16px;padding:18px}.answer-key h3,.answer-key strong{color:#fff}.answer-key p,.answer-key li{color:#e1e9f7}
+    .score-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.score-card{padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--paper)}.score-card label{display:block;color:var(--muted);font-size:.82rem;font-weight:700}.score-card input{margin-top:8px}.comparison{overflow-x:auto}.comparison table{width:100%;border-collapse:collapse}.comparison th,.comparison td{padding:13px;border-bottom:1px solid var(--line);text-align:left}.comparison th{color:var(--navy);background:var(--paper)}
+    .footer-actions{display:flex;justify-content:space-between;gap:14px;margin-top:26px}.hidden-until{filter:blur(6px);user-select:none;pointer-events:none;transition:.2s}.revealed{filter:none;user-select:auto;pointer-events:auto}.reveal-btn{margin-bottom:14px}
+    @media(max-width:900px){.lab-shell{grid-template-columns:1fr}.lab-nav{position:static;display:flex;overflow-x:auto;border-bottom:1px solid var(--line);padding-bottom:8px}.lab-nav small{display:none}.lab-nav button{width:auto;white-space:nowrap;border-left:0;border-bottom:3px solid transparent}.lab-nav button.active{border-left:0;border-bottom-color:var(--blue);border-radius:10px}.grid-3,.score-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:620px){.grid-2,.grid-3,.score-grid{grid-template-columns:1fr}.control-bar{top:64px}.controls{padding:9px 0}.lab-shell{padding-top:22px}.panel{padding:20px}.footer-actions{flex-direction:column-reverse}.footer-actions button{width:100%}}
+    @media print{[data-navigation],.control-bar,.lab-nav,.footer-actions,.no-print,[data-footer]{display:none!important}.lab-shell{display:block}.stage{display:block!important;break-before:page}.tutor-only{display:block}.panel{box-shadow:none}}
+  </style>
+</head>
+<body>
+<div data-navigation></div>
+<header class="lab-hero">
+  <div class="container">
+    <p class="eyebrow">Session 3 · High-Performance Learning Lab</p>
+    <h1>Learn at speed—without mistaking familiarity for mastery.</h1>
+    <p class="hero-copy">A controlled math experiment comparing ordinary learning with a research-aligned three-phase system: <strong>Prime → Process → Retrieve & Repair.</strong></p>
+    <div class="hero-meta"><span class="chip">60 minutes</span><span class="chip">Math: Sequences</span><span class="chip">Evidence-led</span><span class="chip">Responses save automatically</span></div>
+  </div>
+</header>
+<div class="control-bar">
+  <div class="container controls">
+    <div class="progress-wrap"><div class="progress-label"><span id="progressText">Stage 1 of 8</span><span id="saveStatus">Saved</span></div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div></div>
+    <div class="timer"><span id="timerLabel">Open timer</span><span class="timer-display" id="timerDisplay">00:00</span><button class="mini-btn" id="timerToggle">Start</button><button class="mini-btn" id="timerReset">Reset</button></div>
+    <button class="mini-btn" id="facilitatorToggle" aria-pressed="false">Facilitator mode</button>
+  </div>
+</div>
+<main class="container lab-shell" id="labRoot">
+  <aside class="lab-nav" aria-label="Lab stages">
+    <small>Performance Lab</small>
+    <button data-stage="0" class="active">1. Launch</button>
+    <button data-stage="1">2. Baseline</button>
+    <button data-stage="2">3. Prime</button>
+    <button data-stage="3">4. Process</button>
+    <button data-stage="4">5. Retrieve</button>
+    <button data-stage="5">6. Repair</button>
+    <button data-stage="6">7. Transfer</button>
+    <button data-stage="7">8. Compare</button>
+  </aside>
+  <div>
+    <section class="stage active" data-stage-panel="0">
+      <div class="stage-head"><p class="stage-kicker">Stage 1 · Launch</p><h2>The experiment</h2><p class="stage-intro">Today is not a lecture about study skills. It is a direct comparison of two learning workflows using comparable mathematics.</p></div>
+      <div class="panel accent"><h3>Research question</h3><p>Does preparing before instruction, processing selectively during instruction, and retrieving before reviewing improve Isa’s recall, explanation, and transfer?</p></div>
+      <div class="grid-2">
+        <div class="panel"><h3>Round A: Usual method</h3><p>A brief lesson on explicit and recursive sequence rules. Isa learns and takes notes however she normally would.</p></div>
+        <div class="panel green"><h3>Round B: Three-phase method</h3><p>A comparable lesson on arithmetic and geometric sequences using Prime → Process → Retrieve & Repair.</p></div>
+      </div>
+      <div class="panel purple"><h3>Prediction before evidence</h3><div class="grid-2"><div class="field"><label for="predictionMethod">Which approach do you predict will work better?</label><select id="predictionMethod" data-save><option value="">Choose...</option><option>My usual approach</option><option>The three-phase approach</option><option>Probably about the same</option></select></div><div class="field"><label for="predictionReason">Why?</label><textarea id="predictionReason" data-save></textarea></div></div><div class="field"><label for="baselineConfidence">Before we begin, how confident are you that you can learn unfamiliar math quickly? (0–100)</label><input type="number" min="0" max="100" id="baselineConfidence" data-save></div></div>
+      <div class="tutor-only answer-key"><h3>Facilitator objective</h3><p>Do not sell the strategy in advance. Preserve the experiment. Ask Isa to predict, then let performance—not persuasion—determine the conclusion.</p></div>
+      <div class="footer-actions"><span></span><button class="action-btn" data-next>Begin baseline →</button></div>
+    </section>
+
+    <section class="stage" data-stage-panel="1">
+      <div class="stage-head"><p class="stage-kicker">Stage 2 · Baseline</p><h2>Learn it your usual way</h2><p class="stage-intro">The baseline topic is <strong>explicit versus recursive sequence rules</strong>. Start an 8-minute timer. Isa may take notes in her usual manner.</p></div>
+      <div class="panel amber"><div class="instruction warning"><strong>Tutor:</strong> Give the mini-lesson verbally. Do not coach the three-phase system yet. Isa may use the note box below or her normal notes.</div></div>
+      <div class="panel tutor-only answer-key"><h3>Baseline mini-lesson script</h3><p>A <strong>sequence</strong> is an ordered list of numbers. An <strong>explicit rule</strong> gives a direct way to calculate any term using its position. A <strong>recursive rule</strong> tells how to find a term from one or more earlier terms and must include a starting value.</p><p>Example sequence: 5, 8, 11, 14, ...</p><ul><li>Explicit: aₙ = 5 + 3(n − 1)</li><li>Recursive: a₁ = 5 and aₙ = aₙ₋₁ + 3 for n ≥ 2</li></ul><p>Explicit is like using a street address: go directly to the term. Recursive is like following directions from the previous location.</p></div>
+      <div class="panel"><h3>Isa’s baseline notes</h3><textarea id="baselineNotes" data-save style="min-height:180px" placeholder="Take notes however you normally would..."></textarea></div>
+      <div class="panel"><h3>Baseline assessment — close all notes</h3>
+        <div class="question"><p>1. Explain the difference between an explicit rule and a recursive rule.</p><textarea id="bq1" data-save></textarea></div>
+        <div class="question"><p>2. Write an explicit rule for 7, 11, 15, 19, ...</p><input id="bq2" type="text" data-save></div>
+        <div class="question"><p>3. Write a recursive rule for 7, 11, 15, 19, ... Include the starting value.</p><input id="bq3" type="text" data-save></div>
+        <div class="question"><p>4. Which form is usually more efficient for finding the 80th term? Explain.</p><textarea id="bq4" data-save></textarea></div>
+        <div class="question"><p>5. Convert a₁ = 20, aₙ = aₙ₋₁ − 6 into an explicit rule.</p><input id="bq5" type="text" data-save></div>
+      </div>
+      <div class="panel"><h3>Baseline self-score</h3><div class="score-grid"><div class="score-card"><label>Recall / 5</label><input id="baselineRecall" type="number" min="0" max="5" data-save></div><div class="score-card"><label>Explanation / 5</label><input id="baselineExplain" type="number" min="0" max="5" data-save></div><div class="score-card"><label>Application / 5</label><input id="baselineApply" type="number" min="0" max="5" data-save></div><div class="score-card"><label>Confidence %</label><input id="baselinePostConfidence" type="number" min="0" max="100" data-save></div></div></div>
+      <details class="tutor-only"><summary>Baseline answer key and scoring</summary><div class="answer-key"><ol><li>Explicit calculates a term directly from n; recursive calculates from previous term(s) and requires initial value(s).</li><li>aₙ = 7 + 4(n − 1), equivalent aₙ = 4n + 3.</li><li>a₁ = 7; aₙ = aₙ₋₁ + 4, n ≥ 2.</li><li>Explicit, because it directly calculates the 80th term without generating terms 2–79.</li><li>aₙ = 20 − 6(n − 1), equivalent aₙ = 26 − 6n.</li></ol><p>Score each dimension holistically: 5 = accurate, complete, independent; 3 = mostly correct with a meaningful gap; 1 = minimal evidence; 0 = absent.</p></div></details>
+      <div class="footer-actions"><button class="action-btn secondary" data-prev>← Back</button><button class="action-btn" data-next>Begin Phase 1: Prime →</button></div>
+    </section>
+
+    <section class="stage" data-stage-panel="2">
+      <div class="stage-head"><p class="stage-kicker">Stage 3 · Phase 1</p><h2>Prime before class</h2><p class="stage-intro">The goal is not mastery before instruction. It is to create a mental framework so the lesson has somewhere to land.</p></div>
+      <div class="panel accent"><div class="instruction"><strong>12-minute protocol:</strong> Scan → Activate → Predict → Pretest → Set listening targets.</div></div>
+      <div class="panel"><h3>1. Scan the structure</h3><p class="sequence">Arithmetic: 4, 9, 14, 19, ...</p><p class="sequence">Geometric: 4, 12, 36, 108, ...</p><div class="grid-2"><div class="formula">aₙ = a₁ + (n − 1)d</div><div class="formula">gₙ = g₁ · rⁿ⁻¹</div></div><p style="margin-top:14px;color:var(--muted)">Vocabulary: common difference · common ratio · additive change · multiplicative change</p></div>
+      <div class="panel"><h3>2. Activate and predict</h3><div class="field"><label for="priorKnow">What do you already know that may connect to these patterns?</label><textarea id="priorKnow" data-save></textarea></div><div class="grid-2"><div class="field"><label for="predictArithmetic">What do you think the arithmetic formula means?</label><textarea id="predictArithmetic" data-save></textarea></div><div class="field"><label for="predictGeometric">What do you think the geometric formula means?</label><textarea id="predictGeometric" data-save></textarea></div></div></div>
+      <div class="panel"><h3>3. Pretest before studying</h3><div class="question"><p>A. Which sequence appears additive? What evidence supports your answer?</p><textarea id="pq1" data-save></textarea></div><div class="question"><p>B. Which sequence appears multiplicative? What evidence supports your answer?</p><textarea id="pq2" data-save></textarea></div><div class="question"><p>C. Predict the 8th term of 4, 9, 14, 19, ...</p><input id="pq3" type="text" data-save></div></div>
+      <div class="panel purple"><h3>4. Set listening targets</h3><div class="grid-2"><div class="field"><label for="listenConfirm">One idea I want to confirm</label><textarea id="listenConfirm" data-save></textarea></div><div class="field"><label for="listenConfusion">One point of confusion</label><textarea id="listenConfusion" data-save></textarea></div><div class="field"><label for="listenQuestion">One question the lesson should answer</label><textarea id="listenQuestion" data-save></textarea></div><div class="field"><label for="listenExample">One example I need to see</label><textarea id="listenExample" data-save></textarea></div></div></div>
+      <div class="tutor-only answer-key"><h3>Facilitator notes</h3><p>Do not correct every pretest response. The value is generating retrieval attempts and creating targets. Briefly acknowledge useful predictions, then move into instruction.</p></div>
+      <div class="footer-actions"><button class="action-btn secondary" data-prev>← Baseline</button><button class="action-btn" data-next>Go to class: Process →</button></div>
+    </section>
+
+    <section class="stage" data-stage-panel="3">
+      <div class="stage-head"><p class="stage-kicker">Stage 4 · Phase 2</p><h2>Process during class</h2><p class="stage-intro">Capture structure—not every sentence. Use the Tyler-style system to identify the claim, mechanism, example, boundary, representation, and unresolved question.</p></div>
+      <div class="panel amber"><div class="instruction warning"><strong>Tutor:</strong> Deliver the 10-minute lesson from facilitator mode. Isa records selective notes below. Include verbal, table, graph-description, formula, and worked-example representations.</div></div>
+      <div class="panel tutor-only answer-key"><h3>Main lesson script: Arithmetic vs. geometric sequences</h3><p><strong>Central distinction:</strong> arithmetic sequences change by adding the same amount each step; geometric sequences change by multiplying by the same factor each step.</p><ol><li>For 4, 9, 14, 19, the consecutive differences are all +5, so d = 5.</li><li>Arithmetic explicit rule: aₙ = a₁ + (n − 1)d. There are n − 1 jumps from the first term to the nth term.</li><li>For 4, 12, 36, 108, each term is multiplied by 3, so r = 3.</li><li>Geometric explicit rule: gₙ = g₁·rⁿ⁻¹. Again, there are n − 1 multiplications after the first term.</li><li>When plotted by term number, arithmetic sequences form points on a straight line. Geometric sequences generally curve because equal steps in n create multiplicative—not additive—change.</li><li>Decision rule: check differences first; if not constant, check ratios. Do not infer a pattern family from only one change.</li></ol><p><strong>Worked examples:</strong></p><ul><li>6, 10, 14, 18: d = 4; aₙ = 6 + 4(n − 1); a₁₀ = 42.</li><li>5, 15, 45, 135: r = 3; gₙ = 5·3ⁿ⁻¹; g₆ = 1215.</li></ul><p><strong>Boundary:</strong> A constant sequence can technically be arithmetic with d = 0 and geometric with r = 1, so some sequences can fit both definitions.</p></div>
+      <div class="panel"><h3>Live learning notes</h3><div class="grid-2"><div class="field"><label for="noteClaim">Core claim</label><textarea id="noteClaim" data-save></textarea></div><div class="field"><label for="noteMechanism">Why/how it works</label><textarea id="noteMechanism" data-save></textarea></div><div class="field"><label for="noteExample">Worked example</label><textarea id="noteExample" data-save></textarea></div><div class="field"><label for="noteBoundary">Contrast, exception, or boundary</label><textarea id="noteBoundary" data-save></textarea></div><div class="field"><label for="noteRepresentation">Formula, table, or visual connection</label><textarea id="noteRepresentation" data-save></textarea></div><div class="field"><label for="noteQuestion">Unresolved question</label><textarea id="noteQuestion" data-save></textarea></div></div></div>
+      <div class="panel green"><h3>Live comprehension code</h3><p>Mark your current state. This is not a grade; it tells your future self where study time belongs.</p><div class="grid-3"><label class="choice"><input type="checkbox" data-save id="codeExplain"> ✓ I can explain it</label><label class="choice"><input type="checkbox" data-save id="codePartial"> ? Partially unsure</label><label class="choice"><input type="checkbox" data-save id="codeLost"> X Reasoning lost</label><label class="choice"><input type="checkbox" data-save id="codeTest"> T Needs testing</label><label class="choice"><input type="checkbox" data-save id="codeImportant"> ! High importance</label></div></div>
+      <div class="footer-actions"><button class="action-btn secondary" data-prev>← Prime</button><button class="action-btn" data-next>Close notes and retrieve →</button></div>
+    </section>
+
+    <section class="stage" data-stage-panel="4">
+      <div class="stage-head"><p class="stage-kicker">Stage 5 · Phase 3A</p><h2>Retrieve before review</h2><p class="stage-intro">Close the lesson and notes. Reconstruct what you know without support. Effort here is a feature, not a failure.</p></div>
+      <div class="panel purple"><div class="instruction lock-note">Do not return to the Process page until this stage is complete.</div></div>
+      <div class="panel"><h3>Blank-page reconstruction</h3><div class="field"><label for="retrieveMain">Explain the central difference between arithmetic and geometric sequences.</label><textarea id="retrieveMain" data-save></textarea></div><div class="grid-2"><div class="field"><label for="retrieveAFormula">Write and explain the arithmetic explicit formula.</label><textarea id="retrieveAFormula" data-save></textarea></div><div class="field"><label for="retrieveGFormula">Write and explain the geometric explicit formula.</label><textarea id="retrieveGFormula" data-save></textarea></div></div><div class="field"><label for="retrieveDecision">Write a reliable decision process for classifying a sequence.</label><textarea id="retrieveDecision" data-save></textarea></div></div>
+      <div class="panel"><h3>Produce examples</h3><div class="grid-2"><div class="field"><label for="ownArithmetic">Create an arithmetic sequence and its explicit rule.</label><textarea id="ownArithmetic" data-save></textarea></div><div class="field"><label for="ownGeometric">Create a geometric sequence and its explicit rule.</label><textarea id="ownGeometric" data-save></textarea></div></div></div>
+      <div class="panel"><h3>Independent retrieval test</h3><div class="question"><p>1. Classify 18, 13, 8, 3, ... and write an explicit rule.</p><textarea id="rq1" data-save></textarea></div><div class="question"><p>2. Classify 2, 6, 18, 54, ... and write an explicit rule.</p><textarea id="rq2" data-save></textarea></div><div class="question"><p>3. Why does the exponent or multiplier count use n − 1 rather than n?</p><textarea id="rq3" data-save></textarea></div><div class="question"><p>4. How would the plotted points usually differ?</p><textarea id="rq4" data-save></textarea></div><div class="question"><p>5. Give a sequence that can be classified as both arithmetic and geometric.</p><input id="rq5" type="text" data-save></div></div>
+      <div class="panel"><h3>Confidence before checking</h3><label for="mainConfidence" class="field-label">How accurate do you predict your responses are? (0–100)</label><input id="mainConfidence" type="number" min="0" max="100" data-save></div>
+      <div class="footer-actions"><button class="action-btn secondary" data-prev>← Process</button><button class="action-btn green" data-next>Check and repair →</button></div>
+    </section>
+
+    <section class="stage" data-stage-panel="5">
+      <div class="stage-head"><p class="stage-kicker">Stage 6 · Phase 3B</p><h2>Repair the model</h2><p class="stage-intro">Feedback converts retrieval into corrected learning. Compare your reconstruction against the source and identify the precise gap.</p></div>
+      <button class="action-btn secondary reveal-btn no-print" id="revealKey">Reveal reference and answer key</button>
+      <div id="repairReference" class="hidden-until">
+        <div class="panel green"><h3>Reference model</h3><ul><li><strong>Arithmetic:</strong> constant difference d; aₙ = a₁ + (n − 1)d.</li><li><strong>Geometric:</strong> constant ratio r; gₙ = g₁·rⁿ⁻¹.</li><li><strong>n − 1:</strong> the first term has undergone zero changes; the nth term has undergone n − 1 changes.</li><li><strong>Graph:</strong> arithmetic sequence points lie on a line; geometric sequence points usually trace a curved pattern.</li><li><strong>Both:</strong> any nonzero constant sequence has d = 0 and r = 1.</li></ul></div>
+        <div class="panel"><h3>Retrieval test answers</h3><ol><li>Arithmetic, d = −5; aₙ = 18 − 5(n − 1).</li><li>Geometric, r = 3; gₙ = 2·3ⁿ⁻¹.</li><li>There are zero changes at term 1 and one fewer change than the term number.</li><li>Arithmetic points align linearly; geometric points usually do not.</li><li>Example: 7, 7, 7, 7, ...</li></ol></div>
+      </div>
+      <div class="panel"><h3>Error and gap analysis</h3><div class="grid-2"><div class="field"><label for="missingInfo">What was missing?</label><textarea id="missingInfo" data-save></textarea></div><div class="field"><label for="incorrectInfo">What was inaccurate?</label><textarea id="incorrectInfo" data-save></textarea></div><div class="field"><label for="gapType">Primary gap type</label><select id="gapType" data-save><option value="">Choose...</option><option>Knowledge gap</option><option>Recognition gap</option><option>Procedure gap</option><option>Representation gap</option><option>Strategy-selection gap</option><option>Attention error</option><option>Metacognitive error</option><option>No meaningful gap</option></select></div><div class="field"><label for="missedCue">What cue should trigger the correct idea next time?</label><textarea id="missedCue" data-save></textarea></div></div></div>
+      <div class="panel purple"><h3>Teacher Question Builder</h3><div class="field"><label for="qUnderstand">I currently understand...</label><textarea id="qUnderstand" data-save></textarea></div><div class="field"><label for="qBreak">My reasoning breaks when...</label><textarea id="qBreak" data-save></textarea></div><div class="field"><label for="qTried">I have already tried...</label><textarea id="qTried" data-save></textarea></div><div class="field"><label for="qExact">My exact teacher question is...</label><textarea id="qExact" data-save></textarea></div></div>
+      <div class="panel"><h3>Main-method score</h3><div class="score-grid"><div class="score-card"><label>Recall / 5</label><input id="mainRecall" type="number" min="0" max="5" data-save></div><div class="score-card"><label>Explanation / 5</label><input id="mainExplain" type="number" min="0" max="5" data-save></div><div class="score-card"><label>Application / 5</label><input id="mainApply" type="number" min="0" max="5" data-save></div><div class="score-card"><label>Accuracy %</label><input id="mainAccuracy" type="number" min="0" max="100" data-save></div></div></div>
+      <div class="footer-actions"><button class="action-btn secondary" data-prev>← Retrieve</button><button class="action-btn" data-next>Test transfer →</button></div>
+    </section>
+
+    <section class="stage" data-stage-panel="6">
+      <div class="stage-head"><p class="stage-kicker">Stage 7 · Transfer</p><h2>Can the learning travel?</h2><p class="stage-intro">Mastery is more than repeating the example. Apply the structure when the surface details change.</p></div>
+      <div class="panel"><h3>Challenge 1: Two savings plans</h3><p>Plan A begins at $20 and increases by $10 each week. Plan B begins at $20 and increases by 50% each week.</p><div class="grid-2"><div class="field"><label for="t1rules">Write an explicit rule for each plan.</label><textarea id="t1rules" data-save></textarea></div><div class="field"><label for="t1compare">Compare the plans after 6 weeks and explain the long-term behavior.</label><textarea id="t1compare" data-save></textarea></div></div></div>
+      <div class="panel"><h3>Challenge 2: Insufficient evidence</h3><p>Two sequences both begin 3, 6. Must they follow the same pattern? Construct two valid continuations from different families and explain.</p><textarea id="t2" data-save></textarea></div>
+      <div class="panel"><h3>Challenge 3: Diagnose the claim</h3><p>A student says, “The sequence 2, 4, 8, 16 is arithmetic because the numbers keep getting bigger by a predictable amount.” Diagnose the error and replace the claim with a reliable classification rule.</p><textarea id="t3" data-save></textarea></div>
+      <div class="panel"><h3>Challenge 4: Boundary case</h3><p>Explain why 5, 5, 5, 5, ... can fit both sequence families. What values do d and r take?</p><textarea id="t4" data-save></textarea></div>
+      <details class="tutor-only"><summary>Transfer answer key</summary><div class="answer-key"><ol><li>Aₙ = 20 + 10(n − 1). Bₙ = 20(1.5)ⁿ⁻¹. At week 6: A = 70; B = 151.875. Plan B eventually dominates because it compounds multiplicatively.</li><li>No. Arithmetic: 3, 6, 9, 12, ... Geometric: 3, 6, 12, 24, ... Two terms establish one change but not a unique pattern family.</li><li>The differences are 2, 4, 8—not constant. Ratios are all 2, so it is geometric. Reliable rule: check constant differences, then constant ratios.</li><li>d = 0 and r = 1.</li></ol></div></details>
+      <div class="panel"><h3>Transfer score</h3><div class="grid-2"><div class="field"><label for="transferScore">Transfer / 10</label><input id="transferScore" type="number" min="0" max="10" data-save></div><div class="field"><label for="transferConfidence">Confidence %</label><input id="transferConfidence" type="number" min="0" max="100" data-save></div></div></div>
+      <div class="footer-actions"><button class="action-btn secondary" data-prev>← Repair</button><button class="action-btn" data-next>Compare the evidence →</button></div>
+    </section>
+
+    <section class="stage" data-stage-panel="7">
+      <div class="stage-head"><p class="stage-kicker">Stage 8 · Decision</p><h2>Let the evidence decide</h2><p class="stage-intro">Compare outcomes, effort, and confidence calibration. The strategy earns a place only if it improves useful learning.</p></div>
+      <div class="panel comparison"><h3>Performance comparison</h3><table><thead><tr><th>Measure</th><th>Usual method</th><th>Three-phase method</th></tr></thead><tbody><tr><td>Recall / 5</td><td id="outBaselineRecall">—</td><td id="outMainRecall">—</td></tr><tr><td>Explanation / 5</td><td id="outBaselineExplain">—</td><td id="outMainExplain">—</td></tr><tr><td>Application / 5</td><td id="outBaselineApply">—</td><td id="outMainApply">—</td></tr><tr><td>Confidence</td><td id="outBaselineConfidence">—</td><td id="outMainConfidence">—</td></tr><tr><td>Transfer</td><td>Not separately tested</td><td id="outTransfer">—</td></tr></tbody></table></div>
+      <div class="panel green"><h3>Calibration check</h3><p id="calibrationOutput">Enter scores and confidence to compare predicted mastery with measured performance.</p></div>
+      <div class="panel"><h3>Strategy decision</h3><div class="field"><label for="strategyVerdict">What should happen to this method?</label><select id="strategyVerdict" data-save><option value="">Choose...</option><option>Adopt it as written</option><option>Adopt a modified version</option><option>Use only for fast or difficult courses</option><option>Retest before deciding</option><option>Reject it</option></select></div><div class="field"><label for="strategyEvidence">What evidence supports that decision?</label><textarea id="strategyEvidence" data-save></textarea></div><div class="field"><label for="strategyModify">What would make the system more realistic during school?</label><textarea id="strategyModify" data-save></textarea></div></div>
+      <div class="panel purple"><h3>Isa’s version of the Rapid Learning Cycle</h3><div class="grid-3"><div class="field"><label for="myPrime">Before class, I will...</label><textarea id="myPrime" data-save></textarea></div><div class="field"><label for="myProcess">During class, I will...</label><textarea id="myProcess" data-save></textarea></div><div class="field"><label for="myRepair">After class, I will...</label><textarea id="myRepair" data-save></textarea></div></div><div class="field"><label for="nextRetrieval">My next retrieval date or trigger</label><input id="nextRetrieval" type="text" data-save placeholder="Example: tomorrow after dinner"></div></div>
+      <div class="panel amber"><h3>Between-session field test</h3><p>Use the cycle once with SAT, Mandarin, a summer learning task, or another unfamiliar topic. Record minutes spent, delayed recall, and one change needed before school.</p></div>
+      <div class="tutor-only answer-key"><h3>Parent-facing outcome</h3><p>Isa tested a research-aligned learning workflow designed for fast-paced courses. Rather than relying on passive review, she practiced preparing before instruction, capturing the structure of a lesson, retrieving without notes, correcting gaps, and applying the concept in unfamiliar situations. The session generated individualized evidence about which elements improve her learning efficiency.</p></div>
+      <div class="footer-actions"><button class="action-btn secondary" data-prev>← Transfer</button><button class="action-btn green" id="printLab">Print / Save PDF</button></div>
+    </section>
+  </div>
+</main>
+<div data-footer></div>
+<script src="navigation.js"></script>
+<script src="common.js"></script>
+<script>
+(() => {
+  const KEY='isaRapidLearningLabV1';
+  const root=document.getElementById('labRoot');
+  const panels=[...document.querySelectorAll('[data-stage-panel]')];
+  const navButtons=[...document.querySelectorAll('.lab-nav button[data-stage]')];
+  let current=Number(localStorage.getItem(KEY+'Stage')||0);
+  let timerSeconds=0,timerId=null;
+  const timerDisplay=document.getElementById('timerDisplay');
+  const timerToggle=document.getElementById('timerToggle');
+  const saveStatus=document.getElementById('saveStatus');
+
+  function showStage(index){current=Math.max(0,Math.min(panels.length-1,index));panels.forEach((p,i)=>p.classList.toggle('active',i===current));navButtons.forEach((b,i)=>b.classList.toggle('active',i===current));document.getElementById('progressFill').style.width=((current+1)/panels.length*100)+'%';document.getElementById('progressText').textContent=`Stage ${current+1} of ${panels.length}`;document.getElementById('timerLabel').textContent=navButtons[current].textContent.replace(/^\d+\.\s*/, '');localStorage.setItem(KEY+'Stage',current);window.scrollTo({top:document.querySelector('.control-bar').offsetTop,behavior:'smooth'});if(current===7)updateComparison();}
+  navButtons.forEach(b=>b.addEventListener('click',()=>showStage(Number(b.dataset.stage))));
+  document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>showStage(current+1)));
+  document.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',()=>showStage(current-1)));
+
+  function readStore(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}}
+  function saveAll(){const data={};document.querySelectorAll('[data-save]').forEach(el=>{data[el.id]=el.type==='checkbox'?el.checked:el.value});localStorage.setItem(KEY,JSON.stringify(data));saveStatus.textContent='Saved';updateComparison();}
+  const stored=readStore();document.querySelectorAll('[data-save]').forEach(el=>{if(Object.prototype.hasOwnProperty.call(stored,el.id)){if(el.type==='checkbox')el.checked=stored[el.id];else el.value=stored[el.id]}el.addEventListener('input',()=>{saveStatus.textContent='Saving…';clearTimeout(el._saveTimer);el._saveTimer=setTimeout(saveAll,250)});el.addEventListener('change',saveAll)});
+
+  function formatTime(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+  function tick(){timerSeconds++;timerDisplay.textContent=formatTime(timerSeconds)}
+  timerToggle.addEventListener('click',()=>{if(timerId){clearInterval(timerId);timerId=null;timerToggle.textContent='Start'}else{timerId=setInterval(tick,1000);timerToggle.textContent='Pause'}});
+  document.getElementById('timerReset').addEventListener('click',()=>{clearInterval(timerId);timerId=null;timerSeconds=0;timerDisplay.textContent='00:00';timerToggle.textContent='Start'});
+
+  document.getElementById('facilitatorToggle').addEventListener('click',e=>{const on=root.classList.toggle('facilitator-on');e.currentTarget.setAttribute('aria-pressed',on);e.currentTarget.textContent=on?'Exit facilitator':'Facilitator mode'});
+  document.getElementById('revealKey').addEventListener('click',e=>{document.getElementById('repairReference').classList.add('revealed');e.currentTarget.remove()});
+  document.getElementById('printLab').addEventListener('click',()=>window.print());
+
+  function val(id){return document.getElementById(id)?.value||''}
+  function num(id){const n=Number(val(id));return Number.isFinite(n)&&val(id)!==''?n:null}
+  function setText(id,value){document.getElementById(id).textContent=value}
+  function updateComparison(){setText('outBaselineRecall',num('baselineRecall')??'—');setText('outMainRecall',num('mainRecall')??'—');setText('outBaselineExplain',num('baselineExplain')??'—');setText('outMainExplain',num('mainExplain')??'—');setText('outBaselineApply',num('baselineApply')??'—');setText('outMainApply',num('mainApply')??'—');setText('outBaselineConfidence',num('baselinePostConfidence')!==null?num('baselinePostConfidence')+'%':'—');setText('outMainConfidence',num('mainConfidence')!==null?num('mainConfidence')+'%':'—');setText('outTransfer',num('transferScore')!==null?num('transferScore')+'/10':'—');const acc=num('mainAccuracy'),conf=num('mainConfidence');const box=document.getElementById('calibrationOutput');if(acc===null||conf===null){box.textContent='Enter scores and confidence to compare predicted mastery with measured performance.';return}const gap=Math.abs(conf-acc);let msg=`Confidence was ${conf}% and measured accuracy was ${acc}%—a ${gap}-point calibration gap. `;msg+=gap<=10?'That is strong calibration.':conf>acc?'Confidence exceeded performance; the system exposed hidden gaps.':'Performance exceeded confidence; the learning was stronger than it felt.';box.textContent=msg}
+  showStage(current);updateComparison();
+})();
+</script>
+</body>
+</html>
