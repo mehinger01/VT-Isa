@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Isa's Lesson 3 AP History reading methods practice.">
+  <title>AP History Reading Lab | Isa OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cards.css">
+  <script src="theme.js"></script>
+  <style>
+    .reading-hero{padding:56px 0 34px;background:linear-gradient(180deg,#f7f9ff,var(--paper))}
+    .reading-shell{max-width:900px;margin:0 auto;padding:36px 20px 80px}
+    .method-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}
+    .method-step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:0 8px 22px rgba(32,54,95,.05)}
+    .method-step span{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:50%;background:var(--blue-soft);font-weight:800;color:var(--navy)}
+    .reading-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:clamp(22px,5vw,42px);box-shadow:0 12px 30px rgba(32,54,95,.07)}
+    .reading-card h2{font-family:"Playfair Display",serif;font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;margin-bottom:22px}
+    .passage p{font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;line-height:1.78;color:#26344a;margin:0 0 1.3em}
+    .prompt-box{margin-top:24px;padding:20px;border-radius:16px;background:var(--blue-soft)}
+    .field{margin:18px 0}.field label{display:block;font-weight:800;margin-bottom:8px;color:var(--navy)}
+    textarea{width:100%;min-height:100px;padding:13px;border:1px solid #cfd9e8;border-radius:12px;font:inherit;background:#fff}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .small-note{font-size:.9rem;color:var(--muted)}
+    @media(max-width:700px){.method-strip{grid-template-columns:1fr}.reading-shell{padding-inline:14px}.passage p{font-size:1.02rem;line-height:1.7}}
+    @media print{[data-navigation], [data-footer], .actions, .reading-hero .button{display:none!important}.reading-shell{padding:0}.reading-card{box-shadow:none;border:0}}
+  </style>
+</head>
+<body>
+  <div data-navigation></div>
+  <header class="reading-hero">
+    <div class="container">
+      <p class="eyebrow">Lesson 3 · Applied Reading Practice</p>
+      <h1>Read strategically, not linearly.</h1>
+      <p class="hero-copy">Use a three-pass method to identify structure, build a mental map, and collect evidence from an AP U.S. History–style passage.</p>
+      <a class="button secondary" href="session-3-learning-lab.html">← Back to Lesson 3 toolkit</a>
+    </div>
+  </header>
+
+  <main class="reading-shell">
+    <section class="method-strip" aria-label="Three-pass reading method">
+      <article class="method-step"><span>1</span><h3>Map the structure</h3><p class="muted">Read only the first sentence of each paragraph. Predict the passage’s argument.</p></article>
+      <article class="method-step"><span>2</span><h3>Frame the argument</h3><p class="muted">Read the introduction and conclusion. State the central claim in your own words.</p></article>
+      <article class="method-step"><span>3</span><h3>Gather evidence</h3><p class="muted">Read the full passage. Mark evidence, tension, cause and effect, and qualifying language.</p></article>
+    </section>
+
+    <article class="reading-card">
+      <p class="eyebrow">AP U.S. History Practice Reading</p>
+      <h2>The Market Revolution: Progress and Disruption in Early America</h2>
+      <div class="passage">
+        <p>During the first half of the nineteenth century, the United States experienced a dramatic transformation known as the Market Revolution. New roads, canals, railroads, factories, and communication systems connected regions that had once been economically isolated. These developments increased trade, encouraged settlement, and created new opportunities for many Americans. At the same time, however, the Market Revolution widened social divisions and strengthened economic systems that depended on exploited labor.</p>
+        <p>Transportation improvements were among the most important causes of this transformation. The completion of the Erie Canal in 1825 connected the Great Lakes to the Hudson River and the port of New York City. Farmers in western states could now ship crops to eastern markets more quickly and cheaply. Railroads soon extended these connections, while steamboats increased trade along major rivers. As transportation costs fell, Americans became less dependent on local goods and increasingly participated in a national economy.</p>
+        <p>Industrialization also changed how goods were produced. Before the Market Revolution, many families made clothing, tools, and other necessities in their homes. Factories increasingly replaced this household production with machines and wage labor. Textile mills in New England employed large numbers of young women, including the well-known “Lowell mill girls.” For some women, factory employment provided wages and independence. Nevertheless, mill work involved long hours, strict rules, dangerous machinery, and limited opportunities for advancement.</p>
+        <p>The Market Revolution also changed family life and ideas about gender. As more men worked outside the home, middle-class Americans increasingly viewed the home as a protected space separate from business and politics. Women were expected to raise children, manage the household, and provide moral guidance. Historians often call this belief the “cult of domesticity.” Although this ideal celebrated women’s importance within the family, it also reinforced the argument that women should remain outside public and political life.</p>
+        <p>Economic growth in the North was closely connected to the expansion of slavery in the South. Northern textile mills depended on cotton produced by enslaved laborers. The invention of the cotton gin made cotton production more profitable, encouraging plantation owners to expand westward. As a result, slavery spread into Alabama, Mississippi, Louisiana, and Texas. The domestic slave trade forcibly separated families as enslaved people were sold from older states to new cotton-growing regions.</p>
+        <p>The Market Revolution therefore produced both opportunity and hardship. It expanded commerce, increased production, and connected distant communities. It also created harsh factory conditions, reinforced restrictions on women, displaced Indigenous peoples, and increased the demand for enslaved labor. Rather than affecting all Americans equally, economic development distributed its benefits and burdens according to region, race, gender, and social class.</p>
+        <p>Understanding the Market Revolution requires readers to recognize this tension. It was not simply a story of technological progress, nor was it only a story of exploitation. It was a complex transformation that created economic growth while deepening many of the inequalities that would shape American society for generations.</p>
+      </div>
+    </article>
+
+    <section class="prompt-box">
+      <h2>Reading Lab Notes</h2>
+      <div class="field"><label for="map">Pass 1: What structure did the topic sentences reveal?</label><textarea id="map" data-save placeholder="The passage appears to move from..."></textarea></div>
+      <div class="field"><label for="claim">Pass 2: State the central claim in one sentence.</label><textarea id="claim" data-save placeholder="The author argues that..."></textarea></div>
+      <div class="field"><label for="evidence">Pass 3: Which three pieces of evidence best support the claim?</label><textarea id="evidence" data-save placeholder="1. ...&#10;2. ...&#10;3. ..."></textarea></div>
+      <div class="field"><label for="tension">What tension or qualification makes the argument more complex?</label><textarea id="tension" data-save placeholder="Although..., the passage also shows..."></textarea></div>
+      <p class="small-note" id="saveStatus">Responses save automatically on this device.</p>
+      <div class="actions"><button class="button primary" type="button" onclick="window.print()">Print / Save as PDF</button><a class="button secondary" href="session-agendas.html">View session agenda</a></div>
+    </section>
+  </main>
+
+  <div data-footer></div>
+  <script src="navigation.js"></script>
+  <script src="common.js"></script>
+  <script>
+    (()=>{
+      const key='isaLesson3ReadingLabV1';
+      const fields=[...document.querySelectorAll('[data-save]')];
+      const saved=JSON.parse(localStorage.getItem(key)||'{}');
+      fields.forEach(field=>{
+        field.value=saved[field.id]||'';
+        field.addEventListener('input',()=>{
+          saved[field.id]=field.value;
+          localStorage.setItem(key,JSON.stringify(saved));
+          const status=document.getElementById('saveStatus');
+          status.textContent='Saved.';
+          clearTimeout(window.isaSaveTimer);
+          window.isaSaveTimer=setTimeout(()=>status.textContent='Responses save automatically on this device.',1200);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
