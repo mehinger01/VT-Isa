@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Isa's assignment launch protocol for starting complex work efficiently.">
+  <title>Assignment Launch Protocol | Isa OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="cards.css">
+  <link rel="stylesheet" href="tools.css">
+  <script src="theme.js"></script>
+  <style>
+    .launch-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.protocol-step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start}.step-number{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--blue-soft);font-weight:800;color:var(--navy)}.field{margin:16px 0}.field label{display:block;font-weight:800;margin-bottom:7px}.field input,.field textarea,.field select{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;font:inherit;background:#fff}.field textarea{min-height:86px}.timer{font-size:2.6rem;font-weight:800;letter-spacing:.03em}.actions{display:flex;gap:10px;flex-wrap:wrap}.scenario{padding:18px;border:1px solid var(--line);border-radius:16px;background:#fff}@media(max-width:760px){.launch-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div data-navigation></div>
+  <main>
+    <section class="page-hero"><div class="container"><p class="eyebrow">Lesson 3 · Starting Efficiently</p><h1>Turn an assignment into a first action.</h1><p class="lead">The goal is not to plan the entire assignment. The goal is to understand the target well enough to begin useful work within five minutes.</p><p><a class="button secondary" href="session-agendas.html">← Back to session agenda</a></p></div></section>
+    <section class="section"><div class="container stack">
+      <section class="panel"><p class="eyebrow">The five-question launch</p><div class="stack">
+        <article class="protocol-step"><span class="step-number">1</span><div><h3>What is the final product?</h3><p class="muted">Name exactly what must be submitted, completed, demonstrated, or brought to class.</p></div></article>
+        <article class="protocol-step"><span class="step-number">2</span><div><h3>What controls the grade?</h3><p class="muted">Locate the directions, rubric, required components, length, format, and due date.</p></div></article>
+        <article class="protocol-step"><span class="step-number">3</span><div><h3>What materials are needed?</h3><p class="muted">Open only the files, notes, textbook pages, or tools required to begin.</p></div></article>
+        <article class="protocol-step"><span class="step-number">4</span><div><h3>What is the first visible action?</h3><p class="muted">Choose an action you can physically see yourself doing: open the document, label the page, write a claim, solve question one, or identify three sources.</p></div></article>
+        <article class="protocol-step"><span class="step-number">5</span><div><h3>What can happen in five minutes?</h3><p class="muted">Start a brief launch sprint. Momentum matters more than finishing.</p></div></article>
+      </div></section>
+
+      <div class="launch-grid">
+        <section class="panel"><p class="eyebrow">Practice A · Clearly defined</p><h2>AP Chemistry problem set</h2><p class="muted">Complete problems 1–12, show calculations, and submit a photo before 8:00 p.m.</p><div class="field"><label for="a-product">Final product</label><textarea id="a-product" data-save></textarea></div><div class="field"><label for="a-grade">Grade-controlling directions</label><textarea id="a-grade" data-save></textarea></div><div class="field"><label for="a-first">First visible action</label><textarea id="a-first" data-save></textarea></div></section>
+        <section class="panel"><p class="eyebrow">Practice B · Vague and complex</p><h2>History research response</h2><p class="muted">Explain how industrialization changed American society. Use evidence from the assigned sources.</p><div class="field"><label for="b-product">What must the finished response contain?</label><textarea id="b-product" data-save></textarea></div><div class="field"><label for="b-unknown">What is still unclear?</label><textarea id="b-unknown" data-save></textarea></div><div class="field"><label for="b-first">First useful action despite uncertainty</label><textarea id="b-first" data-save></textarea></div></section>
+      </div>
+
+      <section class="panel"><p class="eyebrow">Five-minute launch sprint</p><div class="timer" id="timer">05:00</div><p class="muted">Choose one first action, then begin. Do not redesign the entire plan during the sprint.</p><div class="actions"><button class="button primary" id="startTimer" type="button">Start</button><button class="button secondary" id="resetTimer" type="button">Reset</button></div></section>
+
+      <section class="panel"><p class="eyebrow">Personal version</p><h2>Isa's launch checklist</h2><div class="field"><label for="personal">Rewrite the protocol in language you would actually use.</label><textarea id="personal" data-save placeholder="1. Figure out what I have to turn in...&#10;2. Check what actually matters...&#10;3. Open what I need...&#10;4. Pick the first visible move...&#10;5. Work for five minutes..."></textarea></div><p class="muted" id="saveStatus">Responses save automatically on this device.</p></section>
+    </div></section>
+  </main>
+  <div data-footer></div><script src="navigation.js"></script><script src="common.js"></script>
+  <script>
+    (()=>{const key='isaAssignmentLaunchV1',fields=[...document.querySelectorAll('[data-save]')],saved=JSON.parse(localStorage.getItem(key)||'{}');fields.forEach(f=>{f.value=saved[f.id]||'';f.addEventListener('input',()=>{saved[f.id]=f.value;localStorage.setItem(key,JSON.stringify(saved));document.getElementById('saveStatus').textContent='Saved.';clearTimeout(window.saveTimer);window.saveTimer=setTimeout(()=>document.getElementById('saveStatus').textContent='Responses save automatically on this device.',1200)})});let remaining=300,interval;const display=()=>{const m=String(Math.floor(remaining/60)).padStart(2,'0'),s=String(remaining%60).padStart(2,'0');document.getElementById('timer').textContent=`${m}:${s}`};document.getElementById('startTimer').onclick=()=>{if(interval)return;interval=setInterval(()=>{remaining--;display();if(remaining<=0){clearInterval(interval);interval=null;alert('Five-minute launch complete. Record what changed once you started.')}},1000)};document.getElementById('resetTimer').onclick=()=>{clearInterval(interval);interval=null;remaining=300;display()};display()})();
+  </script>
+</body>
+</html>
