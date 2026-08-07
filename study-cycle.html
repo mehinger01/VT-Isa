@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Isa's reusable study cycle for turning class material into retrieval practice.">
+  <title>Study Cycle | Isa OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="cards.css"><link rel="stylesheet" href="tools.css"><script src="theme.js"></script>
+  <style>
+    .shell{max-width:980px;margin:auto;padding:34px 20px 80px}.cycle{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0 26px}.cycle div{text-align:center;padding:12px 8px;border-radius:14px;background:var(--blue-soft);font-weight:800;color:var(--navy)}.work{background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,34px);margin-bottom:20px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin:12px 0}.field label{display:block;font-weight:800;color:var(--navy);margin-bottom:7px}.field textarea,.field input{width:100%;box-sizing:border-box;border:1px solid #cbd7e7;border-radius:12px;padding:12px;font:inherit;background:#fff}.field textarea{min-height:110px}.prompt-list{display:grid;gap:10px}.prompt{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}.retrieval{padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}.retrieval h3{font-size:1.25rem}.reference{display:none;padding:14px;margin-top:12px;border:1px dashed #a8b9cf;border-radius:12px;background:#fff}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.repair{padding:12px 14px;border-radius:12px;background:#fff4e5;border:1px solid #efd2a4;margin:8px 0}.muted-small{font-size:.9rem;color:var(--muted)}@media(max-width:700px){.cycle,.grid{grid-template-columns:1fr}.cycle{grid-template-columns:1fr 1fr}.cycle div:last-child{grid-column:1/-1}}
+  </style>
+</head>
+<body><div data-navigation></div>
+<main>
+<section class="page-hero"><div class="container"><p class="eyebrow">Reusable learning tool</p><h1>Study Cycle</h1><p class="lead">Use this with a chapter, class notes, lecture, video, science concept, SAT topic, or anything else you need to remember.</p><div class="actions"><a class="button secondary" href="lesson-4-read-note-retrieve.html">← Lesson 4 practice lab</a></div></div></section>
+<div class="shell">
+  <div class="cycle"><div>READ / LEARN</div><div>NOTE</div><div>RETRIEVE</div><div>REPAIR</div><div>SPACE</div></div>
+
+  <section class="work"><p class="eyebrow">1 · Capture the learning</p><h2>What are you working on?</h2>
+    <div class="grid"><div class="field"><label for="topic">Topic / assignment</label><input id="topic" data-save placeholder="APUSH Chapter 3, chemistry bonding..."></div><div class="field"><label for="source">Source</label><input id="source" data-save placeholder="Textbook, class notes, video, lecture..."></div></div>
+    <div class="field"><label for="raw">Paste or summarize the material</label><textarea id="raw" data-save placeholder="Optional: paste a short excerpt, summarize the lesson, or list the key content here."></textarea></div>
+  </section>
+
+  <section class="work"><p class="eyebrow">2 · Filter</p><h2>Build notes that are worth studying</h2><p class="muted">Capture the ideas you need to explain later. Skip decorative detail.</p>
+    <div class="grid"><div class="field"><label for="main">Main idea / claim</label><textarea id="main" data-save></textarea></div><div class="field"><label for="evidence">Evidence / examples</label><textarea id="evidence" data-save></textarea></div><div class="field"><label for="relationships">Causes, effects, relationships</label><textarea id="relationships" data-save></textarea></div><div class="field"><label for="meaning">Why it matters / connections</label><textarea id="meaning" data-save></textarea></div></div>
+  </section>
+
+  <section class="work"><p class="eyebrow">3 · Convert</p><h2>Turn notes into retrieval prompts</h2><p class="muted">Write questions that force you to produce, explain, compare, reconstruct, or solve.</p>
+    <div class="prompt-list">
+      <div class="prompt field"><label for="q1">Prompt 1</label><input id="q1" data-save placeholder="Explain the main idea without looking."></div>
+      <div class="prompt field"><label for="q2">Prompt 2</label><input id="q2" data-save placeholder="What evidence or examples support it?"></div>
+      <div class="prompt field"><label for="q3">Prompt 3</label><input id="q3" data-save placeholder="What causes, effects, or relationships matter?"></div>
+      <div class="prompt field"><label for="q4">Prompt 4</label><input id="q4" data-save placeholder="Apply, compare, or connect this idea."></div>
+    </div>
+  </section>
+
+  <section class="work"><p class="eyebrow">4 · Close everything</p><h2>Retrieve from memory</h2>
+    <div class="actions"><button class="button primary" type="button" id="start">Start retrieval</button><button class="button secondary" type="button" id="next">Next prompt</button></div>
+    <div class="retrieval" style="margin-top:14px"><h3 id="question">Your prompt will appear here.</h3><div class="field"><label for="answer">Answer from memory</label><textarea id="answer" placeholder="No peeking. Produce what you know first."></textarea></div><button class="button secondary" id="check" type="button">Check my notes</button><div class="reference" id="reference"></div><div class="actions" id="scores" style="display:none"><button class="button secondary" data-score="got" type="button">✓ Got it</button><button class="button secondary" data-score="partial" type="button">~ Partial</button><button class="button secondary" data-score="missed" type="button">↺ Missed</button></div></div>
+  </section>
+
+  <section class="work"><p class="eyebrow">5 · Target the gaps</p><h2>Repair list</h2><div id="repairList"><p class="muted">Partial and missed prompts will appear here.</p></div><div class="actions"><button class="button secondary" id="clear" type="button">Clear repair list</button></div></section>
+
+  <section class="work"><p class="eyebrow">6 · Come back later</p><h2>Space the retrieval</h2><div class="grid"><label class="prompt"><input id="d1" type="checkbox" data-check> Today: first retrieval + repair</label><label class="prompt"><input id="d2" type="checkbox" data-check> Tomorrow: quick retrieval</label><label class="prompt"><input id="d3" type="checkbox" data-check> 3–4 days: hard ideas again</label><label class="prompt"><input id="d4" type="checkbox" data-check> About a week: can I still use it?</label></div><p class="muted-small" id="save">Everything on this page saves automatically on this device.</p></section>
+</div>
+</main><div data-footer></div><script src="navigation.js"></script><script src="common.js"></script>
+<script>
+(()=>{const KEY='isaReusableStudyCycleV1',s=JSON.parse(localStorage.getItem(KEY)||'{}'),save=()=>{localStorage.setItem(KEY,JSON.stringify(s));const el=document.getElementById('save');el.textContent='Saved.';clearTimeout(window.scSave);window.scSave=setTimeout(()=>el.textContent='Everything on this page saves automatically on this device.',1000)};document.querySelectorAll('[data-save]').forEach(e=>{e.value=s[e.id]||'';e.addEventListener('input',()=>{s[e.id]=e.value;save()})});document.querySelectorAll('[data-check]').forEach(e=>{e.checked=!!s[e.id];e.addEventListener('change',()=>{s[e.id]=e.checked;save()})});let pos=0,order=[],rep=s.rep||[];const qs=()=>[1,2,3,4].map((n,i)=>({id:i,q:document.getElementById('q'+n).value||['Explain the main idea without looking.','What evidence or examples support it?','What causes, effects, or relationships matter?','Apply, compare, or connect this idea.'][i],ref:[document.getElementById('main').value,document.getElementById('evidence').value,document.getElementById('relationships').value,document.getElementById('meaning').value][i]||'Check your notes or source for this idea.'}));const question=document.getElementById('question'),reference=document.getElementById('reference'),scores=document.getElementById('scores');function show(){if(!order.length)order=[0,1,2,3];const p=qs()[order[pos%order.length]];question.textContent=p.q;question.dataset.id=p.id;document.getElementById('answer').value='';reference.style.display='none';scores.style.display='none'}function render(){const box=document.getElementById('repairList');box.innerHTML=rep.length?rep.map(x=>`<div class="repair"><strong>${x.q}</strong><br>${x.score==='missed'?'Missed':'Partial'} — repair, close notes, retrieve again.</div>`).join(''):'<p class="muted">No repair items right now.</p>'}document.getElementById('start').onclick=()=>{order=[0,1,2,3].sort(()=>Math.random()-.5);pos=0;show()};document.getElementById('next').onclick=()=>{pos++;show()};document.getElementById('check').onclick=()=>{const p=qs()[+question.dataset.id];reference.innerHTML='<strong>Reference notes</strong><p>'+p.ref.replace(/</g,'&lt;')+'</p>';reference.style.display='block';scores.style.display='flex'};scores.onclick=e=>{const b=e.target.closest('[data-score]');if(!b)return;const p=qs()[+question.dataset.id];rep=rep.filter(x=>x.id!==p.id);if(b.dataset.score!=='got')rep.push({id:p.id,q:p.q,score:b.dataset.score});s.rep=rep;save();render();pos++;show()};document.getElementById('clear').onclick=()=>{rep=[];s.rep=[];save();render()};render()})();
+</script>
+</body></html>
