@@ -5,8 +5,8 @@ const navItems = [
   ['System Mapper', 'system-mapper.html'],
   ['Energy Dashboard', 'energy-dashboard.html'],
   ['Reset Builder', 'reset-builder.html'],
-  ['Session Agendas', 'session-agendas.html'],
-  ['Session Minutes', 'session-minutes.html'],
+  ['My Session Roadmap', 'session-agendas.html'],
+  ['My Session Notes', 'session-minutes.html'],
   ['Resources', 'resources.html']
 ];
 
