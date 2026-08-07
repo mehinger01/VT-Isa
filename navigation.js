@@ -1,6 +1,7 @@
 const navItems = [
   ['Home', 'index.html'],
   ['Learning Lab', 'session-3-learning-lab.html'],
+  ['Study Cycle', 'study-cycle.html'],
   ['Learning Templates', 'learning-templates.html'],
   ['System Mapper', 'system-mapper.html'],
   ['Energy Dashboard', 'energy-dashboard.html'],
